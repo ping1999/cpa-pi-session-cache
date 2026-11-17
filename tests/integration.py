@@ -143,5 +143,8 @@ plugins:
             print('PASS control: disabled plugin reproduces identical upstream ID despite different headers')
         finally:
             subprocess.run(['docker','rm','-f',name],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+            # Docker writes logs/auth updates as root; restore ownership only on
+            # this disposable test directory before TemporaryDirectory cleans it.
+            subprocess.run(['docker','run','--rm','-v',f'{tmp}:/probe','--entrypoint','chown',IMAGE,'-R',f'{os.getuid()}:{os.getgid()}','/probe'],check=True,stdout=subprocess.DEVNULL)
             server.shutdown();server.server_close()
 if __name__=='__main__':main()
