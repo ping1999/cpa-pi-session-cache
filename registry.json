@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "plugins": [{
+    "id": "pi-cpa-session-cache",
+    "name": "Pi Session Cache Namespace",
+    "description": "Map opt-in Pi session headers to stable Antigravity session IDs without modifying conversation text.",
+    "author": "ping1999",
+    "version": "0.1.0",
+    "repository": "https://github.com/ping1999/cpa-pi-session-cache",
+    "license": "MIT",
+    "tags": ["antigravity", "pi", "session", "cache"],
+    "install": { "type": "github-release" }
+  }]
+}
